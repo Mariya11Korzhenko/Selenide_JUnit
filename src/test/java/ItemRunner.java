@@ -14,13 +14,11 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 public class ItemRunner {
     private static ItemsStartPage itemsStartPage;
 
-    @BeforeClass
-    public static void setup() {
-        itemsStartPage = DriverSettings.setUpDriver();
-    }
+
 
     @Test()
     public void scenario1() {
+        itemsStartPage = DriverSettings.setUpDriver();
         int numberOfElements = 5;
         String textOfElement = "Item";
         boolean elementsAreEqual;
@@ -38,20 +36,16 @@ public class ItemRunner {
 
 
 
-    public void setUpForScenario2() {
+
+    @Test
+    public void scenario2() {
         itemsStartPage = DriverSettings.setUpDriver();
         int numberOfElements = 3;
         String textOfElement = "Item";
         for (int i = 0; i < numberOfElements; i++) {
             itemsStartPage.addItem(textOfElement + i);
         }
-    }
 
-
-    @Test
-    public void scenario2() {
-        setUpForScenario2();
-        String textOfElement = "Item";
         boolean elementsAreEqual;
         for (int i = 0; i < 2; i++) {
             itemsStartPage.clickTogle(i);
@@ -75,7 +69,13 @@ public class ItemRunner {
 
     @Test
     public void scenario3() {
-        setUpForScenario2();
+        itemsStartPage = DriverSettings.setUpDriver();
+        int numberOfElements = 3;
+        String textOfElement = "Item";
+        for (int i = 0; i < numberOfElements; i++) {
+            itemsStartPage.addItem(textOfElement + i);
+        }
+
         List<String> allElements = itemsStartPage.getAllItemsTextList();
         boolean elementsAreEqual;
         Assert.assertFalse(itemsStartPage.checkClearCompletedButtonIsDisplayed());
@@ -95,25 +95,21 @@ public class ItemRunner {
     }
 
 
-    public void setUpForScenario4() {
+    @Test
+    public void scenario4() {
         itemsStartPage = DriverSettings.setUpDriver();
         int numberOfElements = 100;
         String textOfElement = "Item";
         for (int i = 0; i < numberOfElements; i++) {
             itemsStartPage.addItem(textOfElement + i);
         }
-    }
 
-    @Test
-    public void scenario4() {
-        setUpForScenario4();
         boolean elementsAreEqual;
         itemsStartPage.removeItem(30);
         for (int i = 0; i < 50; i++) {
             itemsStartPage.clickTogle(i);
         }
         itemsStartPage.clickActiveButton();
-        String textOfElement = "Item";
         for (int i = 0; i < 20; i++) {
             int expected = i + 80;
             elementsAreEqual = itemsStartPage.containsItem(i, textOfElement + expected);
@@ -123,7 +119,8 @@ public class ItemRunner {
     }
 
 
-    public void setUpForScenario5()  {
+    @Test
+    public void scenario5() {
         itemsStartPage = DriverSettings.setUpDriver();
         String item1 = "@#$%^";
         itemsStartPage.addItem(item1);
@@ -137,11 +134,7 @@ public class ItemRunner {
             item3 += "a @$%";
         }
         itemsStartPage.addItem(item3);
-    }
 
-    @Test
-    public void scenario5() {
-        setUpForScenario5();
         String item1Text;
         String item2Text;
         List<SelenideElement> allElements = itemsStartPage.getAllItemsList();
@@ -186,14 +179,13 @@ public class ItemRunner {
 
     }
 
-    @AfterEach()
+    @After
     public void cleanUp() {
         itemsStartPage.clickAllButton();
         itemsStartPage.clickTogleAll();
         itemsStartPage.clickClearCompletedButton();
         getWebDriver().manage().deleteAllCookies();
         getWebDriver().quit();
-        getWebDriver().close();
     }
 }
 
