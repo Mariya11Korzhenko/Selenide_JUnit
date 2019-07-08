@@ -11,7 +11,7 @@ import java.util.List;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-public class ItemRunner {
+public class ItemRunnerTest {
     private static ItemsStartPage itemsStartPage;
 
 
