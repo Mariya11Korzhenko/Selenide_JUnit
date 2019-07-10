@@ -87,6 +87,7 @@
                 <version>2.9</version>
                 <configuration>
                     <reportVersion>2.8.1</reportVersion>
+
                 </configuration>
             </plugin>
         </plugins>
