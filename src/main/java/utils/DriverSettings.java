@@ -12,7 +12,7 @@ public class DriverSettings {
 
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
-        Configuration.browser = "firefox";
+//        Configuration.browser = "firefox";
         Configuration.timeout = 10000;
 
 
