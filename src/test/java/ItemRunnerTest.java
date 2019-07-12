@@ -135,12 +135,11 @@ public class ItemRunnerTest {
         }
         itemsStartPage.addItem(item3);
 
-        String item1Text;
-        String item2Text;
+
         List<SelenideElement> allElements = itemsStartPage.getAllItemsList();
         List<SelenideElement> editElements = itemsStartPage.getAllEditElementList();
-        item1Text = allElements.get(0).getText();
-        item2Text = allElements.get(1).getText();
+        String item1Text = allElements.get(0).getText();
+        String item2Text = allElements.get(1).getText();
         int textSize = item1Text.length();
         allElements.get(0).doubleClick();
         for (int i = 0; i < textSize; i++) {
