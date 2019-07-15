@@ -135,7 +135,6 @@ public class ItemRunnerTest {
         }
         itemsStartPage.addItem(item3);
 
-
         List<SelenideElement> allElements = itemsStartPage.getAllItemsList();
         List<SelenideElement> editElements = itemsStartPage.getAllEditElementList();
         String item1Text = allElements.get(0).getText();

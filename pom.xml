@@ -78,9 +78,9 @@
                         </property>
                     </systemProperties>
                     <!--//settings for parallel tests running-->
-                    <!-- <parallel>methods</parallel>-->
-                    <!--<useUnlimitedThreads>true</useUnlimitedThreads>-->
-                    <!--<threadCountMethods>2</threadCountMethods>-->
+                     <parallel>methods</parallel>
+                    <useUnlimitedThreads>true</useUnlimitedThreads>
+                    <threadCountMethods>2</threadCountMethods>
                 </configuration>
                 <dependencies>
                     <dependency>
