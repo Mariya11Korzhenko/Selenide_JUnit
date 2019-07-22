@@ -52,6 +52,12 @@
             <version>2.12.1</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -60,7 +66,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
                 <configuration>
-
+                    <includes>
+                        <include>**/TodosSpecTest/*</include>
+                    </includes>
                     <testFailureIgnore>true</testFailureIgnore>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
@@ -78,9 +86,8 @@
                         </property>
                     </systemProperties>
                     <!--//settings for parallel tests running-->
-                     <parallel>methods</parallel>
-                    <useUnlimitedThreads>true</useUnlimitedThreads>
-                    <threadCountMethods>2</threadCountMethods>
+                    <parallel>classes</parallel>
+                    <threadCount>2</threadCount>
                 </configuration>
                 <dependencies>
                     <dependency>
