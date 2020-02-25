@@ -1,6 +1,7 @@
 package TodosSpecTest;
 
 import com.codeborne.selenide.Configuration;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.BeforeClass;
 import pages.ActiveItemsPage;
@@ -24,7 +25,6 @@ public abstract class TestBase {
     @After
     public void afterMethod(){
         new ActiveItemsPage().clearAllItems();
-        clearBrowserCookies();
         close();
     }
 }
